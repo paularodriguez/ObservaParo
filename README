@@ -1,4 +1,5 @@
-This is your new Play application
-=====================================
+This application is designed to provide an analysis of the unemployment data in Spain. 	 
+It is based on Play Framework and Java.
 
-This file will be packaged with your application, when using `play dist`.
+This project is developed by Paula Rodríguez Parrondo to the subject 'Software Arquitecture'.
+
