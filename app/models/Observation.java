@@ -1,6 +1,5 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,23 +13,47 @@ import play.db.ebean.Model;
 @Entity
 public class Observation extends Model {
     
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
   @Id
   public Long id;
   
   @Required
-  public Double obsValue;
+  private Double obsValue;
 
   @ManyToOne
   public Indicator indicator;
   
-  public static Finder<Long,Observation> find = new Finder(Long.class, Observation.class);
+  @Required
+  public Sector sector;
+  
+  @Required
+  public Year year;
+  
+  @Required
+private Month month;
 
+private double agricultureSector;
+  
+
+  /**
+   * Generic query helper for entity Company with id Long
+   */
+  public static Model.Finder<Long,Observation> find = new Model.Finder<Long,Observation>(Long.class, Observation.class);
+  
   public Observation(Indicator indicator, Double value) {
 	  this.indicator=indicator;
-	  this.obsValue = value ;
+	  this.setObsValue(value) ;
   }
 
-  public static List<Observation> all() {
+  public Observation() {
+	// TODO Auto-generated constructor stub
+}
+
+public static List<Observation> all() {
     return find.all();
   }
   
@@ -47,10 +70,39 @@ public class Observation extends Model {
   public static Double average(List<Observation> observations) {
 	  Double sum = 0.0;
 		for (Observation obs : observations) {
-			sum += obs.obsValue;
+			sum += obs.getObsValue();
 		}
 		return sum / observations.size() ;
   }
+
+public Double getObsValue() {
+	return obsValue;
+}
+
+public void setObsValue(Double obsValue) {
+	this.obsValue = obsValue;
+}
+
+public Month getMonth() {
+	return month;
+}
+
+public void setMonth(Month month) {
+	this.month = month;
+}
+
+public void setAgricultureSectorValue(double agricultureSector) {
+	this.setAgricultureSector(agricultureSector);
+	
+}
+
+public double getAgricultureSector() {
+	return agricultureSector;
+}
+
+public void setAgricultureSector(double agricultureSector) {
+	this.agricultureSector = agricultureSector;
+}
 
  
 
