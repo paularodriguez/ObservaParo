@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import play.data.validation.Constraints;
@@ -35,7 +36,7 @@ public class AutonomousCommunity extends Model{
     /**
      * Provinces of the autonomous community
      */
-    @OneToMany
+    @ManyToOne
 	private List<Province> provinces;
     
     /**

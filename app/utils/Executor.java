@@ -2,28 +2,21 @@ package utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.util.List;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import models.Observation;
 
 public class Executor {
 
 	public static void main(String[] args) {
-		ExcelReader eR = new ExcelReader();
+		ExcelReaderProvinceCAUnemployment eR = new ExcelReaderProvinceCAUnemployment();
+		List<Observation> obsList = null;
 		try {
-			eR.read(new FileInputStream(new File("documents/evolparoseries.xls")));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidFormatException e) {
+			obsList = eR.read(new FileInputStream(
+					new File("documents/parosexoedadprov.xls")));
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
-
 }

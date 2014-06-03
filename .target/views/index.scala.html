@@ -1,15 +1,110 @@
-@main(title = "ObservaParo") {
+@(currentPage: com.avaje.ebean.Page[Observation], currentSortBy: String, currentOrder: String, currentFilter: String)
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
     
-    <h1>Bienvenido a ObservaParo</h1>
+    var sortBy = currentSortBy
+    var order = currentOrder
     
-    <aside>
-    <h3>Servicio público de empleo</h3>
-    <ul>
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
     
-    <li>Estadística mensual</li>
-    <li>Estadística empleo</li>
-    <li>Estadística por municipios</li>
-    <li>Estadística formación</li>
-    </ul>
-    </aside>
+    // Generate the link
+    routes.Application.list(newPage, sortBy, order, currentFilter)
+ }
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@main("ObservaParo")  {
+
+    <div id="actions">
+        
+        <form action="@link(0, "name")" method="GET">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by computer name...">
+            <input type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
+        </form>
+        
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+        
+    } else {
+        
+        <table class="computers zebra-striped">
+            <thead>
+                <tr>
+                  <td>Provincia</td>
+                  <td>CA</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(observation <- currentPage.getList) {
+                    <tr>
+                        <td>
+                         	@observation.province
+                        </td>
+                        <td>
+                        	@observation.obsValue
+                        </td>
+                        <td>
+                          	@observation.autonomousCommunity
+                        </td>                       
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+         <div id="pagination" class="pagination">
+            <ul>
+                @if(currentPage.hasPrev) {
+                    <li class="prev">
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
+                    </li>
+                } else {
+                    <li class="prev disabled">
+                        <a>&larr; Previous</a>
+                    </li>
+                }
+                <li class="current">
+                    <a>Displaying @currentPage.getDisplayXtoYofZ(" to "," of ")</a>
+                </li>
+                @if(currentPage.hasNext) {
+                    <li class="next">
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
+                    </li>
+                } else {
+                    <li class="next disabled">
+                        <a>Next &rarr;</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        
+    }
+        
 }
