@@ -6,17 +6,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import models.Observation;
+import models.HistoricObservation;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelReaderSectorUnemploymentEvolution {
-	public List<Observation> read(InputStream input) throws IOException,
+	public List<HistoricObservation> read(InputStream input) throws IOException,
 			Exception {
-		List<Observation> obsList = new ArrayList<Observation>();
+		List<HistoricObservation> obsList = new ArrayList<HistoricObservation>();
 
 		org.apache.poi.ss.usermodel.Workbook workbook = WorkbookFactory
 				.create(input);
@@ -24,7 +23,7 @@ public class ExcelReaderSectorUnemploymentEvolution {
 
 		Iterator<Row> rowIterator = sheet.iterator();
 
-		double year = 0;
+		int year = 2005;
 		String month = "";
 		double totalValue = 0;
 		double agricultureSector = 0;
@@ -34,17 +33,18 @@ public class ExcelReaderSectorUnemploymentEvolution {
 		double withoutEmploy = 0;
 
 		while (rowIterator.hasNext()) {
-			Observation obs = null;
+			HistoricObservation obs = null;
 			Row row = rowIterator.next();
 			// For each row, iterate through all the columns
 			Iterator<Cell> cellIterator = row.cellIterator();
-
-			// Util data start at line 5 and finish at line 112
-			if (row.getRowNum() > 4 && row.getRowNum() < 113) {
-				obs = new Observation();
+			
+			// Util data start at line 5 and finish at line 126
+			if (row.getRowNum() > 4 && row.getRowNum() < 126) {
+				obs = new HistoricObservation();
+				obs.setYear(year);
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
-
+					
 					if (cell.getColumnIndex() == 2) {
 						month = cell.getStringCellValue();
 						obs.setMonth(month);
@@ -75,14 +75,14 @@ public class ExcelReaderSectorUnemploymentEvolution {
 						obs.setWithoutEmploy(withoutEmploy);
 					}
 				}
+				if(obs.getMonth().equals("DICIEMBRE")){
+					year=year+1;
+				}
 			}
-			if (obs != null)
+			if (obs != null && !obs.getMonth().equals("")){
 				obsList.add(obs);
+			}
 		}
-
-		for (Observation o : obsList)
-			System.out.println(o.getMonth());
-
 		return obsList;
 
 	}

@@ -1,0 +1,55 @@
+@(obs: List[ProvinceObservation])
+
+@main("Provinces") {  
+<tbody>
+	<table>
+				<thead>
+					<td>Province</td>
+					<td>Total Value</td>
+					<td>Total hombres</td>
+					<td>Total mujeres</td>
+					<td>Total < 25</td>
+					<td>Total < 25 hombres</td>
+					<td>Total < 25 mujeres</td>
+					<td>Total > 25</td>
+					<td>Total > 25 hombres</td>
+					<td>Total > 25 mujeres</td>
+				</thead>
+                @for(o <- obs) {
+                    <tr>
+                        <td>
+                         	@o.province.name
+                        </td>
+                        <td>
+                        	@o.totalValue
+                        </td>
+                        <td>
+                        	@o.totalValueMen
+                        </td>
+                        <td>
+                        	@o.totalValueWomen
+                        </td>
+                        <td>
+                        	@o.totalValueUnder25
+                        </td>
+                           <td>
+                        	@o.valueMenUnder25
+                        </td>
+                            <td>
+                        	@o.valueWomenUnder25
+                        </td>
+                        <td>
+                        	@o.totalValueOver25
+                        </td>
+                        <td>
+                        	@o.valueMenOver25
+                        </td>
+                        <td>
+                        	@o.valueWomenOver25
+                        </td>
+                    </tr>
+                }
+	</table>
+            </tbody>
+
+}

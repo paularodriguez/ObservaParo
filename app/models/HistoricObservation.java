@@ -11,7 +11,7 @@ import play.db.ebean.Model;
 import com.avaje.ebean.Page;
 
 @Entity
-public class Observation extends Model {
+public class HistoricObservation extends Model {
 
 	/**
 	 * 
@@ -25,6 +25,9 @@ public class Observation extends Model {
 	public Double obsValue;
 
 	@Required
+	public int year;
+	
+	@Required
 	public String month;
 
 	public double agricultureSector;
@@ -32,34 +35,31 @@ public class Observation extends Model {
 	public double buildingSector;
 	public double servicesSector;
 	public double withoutEmploy;
-	
-	public String autonomousCommunity;
-	public String province;
 
 	/**
 	 * Generic query helper for entity Company with id Long
 	 */
-	public static Model.Finder<Long, Observation> find = new Model.Finder<Long, Observation>(
-			Long.class, Observation.class);
+	public static Model.Finder<Long, HistoricObservation> find = new Model.Finder<Long, HistoricObservation>(
+			Long.class, HistoricObservation.class);
 
 
-	public Observation() {
+	public HistoricObservation() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static Observation create(Double obsValue, String month, Double agricultureSector) {
-		Observation observation = new Observation(obsValue, month, agricultureSector);
+	public static HistoricObservation create(Double obsValue, String month, Double agricultureSector) {
+		HistoricObservation observation = new HistoricObservation(obsValue, month, agricultureSector);
 		observation.save();
 		return observation;
 	}
 	
-	public Observation (double obsValue, String month, double agricultureSector) {
+	public HistoricObservation (double obsValue, String month, double agricultureSector) {
 		this.obsValue = obsValue;
 		this.month = month;
 		this.agricultureSector = agricultureSector;
 	}
 	
-	public static List<Observation> all() {
+	public static List<HistoricObservation> all() {
 		return find.all();
 	}
 
@@ -68,14 +68,14 @@ public class Observation extends Model {
 	}
 
 	public static void deleteAll() {
-		for (Observation obs : all()) {
+		for (HistoricObservation obs : all()) {
 			obs.delete();
 		}
 	}
 
-	public static Double average(List<Observation> observations) {
+	public static Double average(List<HistoricObservation> observations) {
 		Double sum = 0.0;
-		for (Observation obs : observations) {
+		for (HistoricObservation obs : observations) {
 			sum += obs.getObsValue();
 		}
 		return sum / observations.size();
@@ -150,24 +150,16 @@ public class Observation extends Model {
 	 * @param pageSize
 	 *            Number of observations per page
 	 */
-	public static Page<Observation> page(int page, int pageSize) {
+	public static Page<HistoricObservation> page(int page, int pageSize) {
 		return find.where().findPagingList(pageSize).setFetchAhead(false).getPage(page);
 	}
 
-	public String getAutonomousCommunity() {
-		return autonomousCommunity;
+	public int getYear() {
+		return year;
 	}
 
-	public void setAutonomousCommunity(String autonomousCommunity) {
-		this.autonomousCommunity = autonomousCommunity;
-	}
-
-	public String getProvince() {
-		return province;
-	}
-
-	public void setProvince(String province) {
-		this.province = province;
+	public void setYear(int year) {
+		this.year = year;
 	}
 
 }

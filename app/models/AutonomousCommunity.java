@@ -6,66 +6,76 @@ import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 /**
- * This class show an autonomous community. An autonomous community can be formed by one or more provinces.
- * The autonomous cities like Ceuta and Melilla will be considered as autonomous communities.
+ * This class show an autonomous community. An autonomous community can be
+ * formed by one or more provinces. The autonomous cities like Ceuta and Melilla
+ * will be considered as autonomous communities.
  * 
  * @author Paula
- *
+ * 
  */
 @Entity
-public class AutonomousCommunity extends Model{
-	
+public class AutonomousCommunity extends Model {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    public Long id;
-    
-    @Constraints.Required
-    public String name;
-    
-    /**
-     * Provinces of the autonomous community
-     */
-    @ManyToOne
-	private List<Province> provinces;
-    
-    /**
-     * Generic query helper for entity Company with id Long
-     */
-    public static Model.Finder<Long,AutonomousCommunity> find = new Model.Finder<Long,AutonomousCommunity>(Long.class, AutonomousCommunity.class);
+	public String id;
+	@Id
+	public String name;
 
-    /**
-     * Query thats allowed the capability to order the list
-     * @return
-     */
-    public static Map<String,String> options() {
-        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
-        for(AutonomousCommunity c: AutonomousCommunity.find.orderBy("name").findList()) {
-            options.put(c.id.toString(), c.name);
-        }
-        return options;
-    }
+	public AutonomousCommunity() {
 
-	public List<Province> getProvinces() {
-		return provinces;
 	}
 
-	public void setProvinces(List<Province> provinces) {
-		this.provinces = provinces;
+	/**
+	 * Generic query helper for entity Company with id Long
+	 */
+	public static Model.Finder<Long, AutonomousCommunity> find = new Model.Finder<Long, AutonomousCommunity>(
+			Long.class, AutonomousCommunity.class);
+
+	/**
+	 * Query thats allowed the capability to order the list
+	 * 
+	 * @return
+	 */
+	public static Map<String, String> options() {
+		LinkedHashMap<String, String> options = new LinkedHashMap<String, String>();
+		for (AutonomousCommunity c : AutonomousCommunity.find.orderBy("name")
+				.findList()) {
+			options.put(c.getId().toString(), c.getName());
+		}
+		return options;
 	}
-	
-	public void addProvince(Province province){
-		this.provinces.add(province);
-	}    
-    
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public static List<AutonomousCommunity> all() {
+		return find.all();
+	}
+
+	public static AutonomousCommunity findByName(String name) {
+		return find.where().eq("name", name).findUnique();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

@@ -1,65 +1,91 @@
-html {
-    background: #eee;
+h1,h2{ 
+	color:black;
 }
 
-header h1 {
-    padding: 0.4em 1.1em;
-    color: white;
-    font-weight: normal;
-    font-size: 24px;
+h1{
+	font-size:38px;
 }
 
-section#main {
-    position: relative;
-    padding: 5em 2em;
-    border-bottom: 1px solid #ccc;
-    min-height: 600px;
-} 
-
-section#main .topRight {
-    position: absolute;
-    right: 20px;
-    top: 70px;
+h2{
+	font-size:28px;
+}
+header img {
+	width:200px;
+	height:150px;
+	float: left;
 }
 
-table.computers em {
-    color: #aaa;
+header a{
+	text-decoration:none;
 }
 
-table.computers .introduced, table.computers .discontinued {
-    width: 10%;
-    min-width: 100px;
+header {
+	display:-webkit-box;
+	text-align:center;
 }
 
-table.computers .company_name {
-    width: 30%;
-    min-width: 300px;
+body{
+	margin:30px;
 }
 
-table.computers .header a {
+nav{
+	padding:1px;
+	background-color:#CD5C5C;
 }
 
-#actions {
-    position: relative;
+nav ul li{
+	padding:10px;
+	display:inline;
+	margin:10px;
+	font-size:20px;
 }
 
-#actions #add {
-    position: absolute;
-    right: 0;
-    top: 0;
+nav ul li:hover{
+	background-color:#A52A2A;
+}
+
+nav ul li a{
+	text-decoration:none;
+}
+
+nav ul li a{
+	color:black;
+}
+
+table {
+	margin:0 auto;
+	text-align:center;
+	width: 800px; 
+	height: 100px;
+	
+}
+
+table thead{
+	background-color:#CD5C5C;
+	padding:10px;
+}
+
+table thead tr td{
+	height:40px;
+	font-size:18px;
 }
 
 #pagination {
-    position: relative;
-}
-
-#pagination ul {
-    position: absolute;
-    right: 0;
-}
-
-#pagination ul .current a {
-    color: #666;
-}
-
-
+ 	float:right;
+ }
+ 
+#pagination ul li{
+  text-align:center;
+  text-decoration:none;
+  display:inline;
+  margin:10px;
+ }
+ 
+ #pagination ul li a{
+  	color:black;
+  	text-decoration:none;
+ }
+ 
+ #pagination ul li a:visited{
+  	color:black;
+ }
