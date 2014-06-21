@@ -1,20 +1,21 @@
 @(communities: List[ACObservation], cas: List[AutonomousCommunity])
-@main("Autonomous Communities") {  
+@import play.i18n._
+@main(Messages.get("CAs")) {  
 <tbody>
 
   <table>
   				<thead>
-  					<td>CA Id</td>
-					<td>CA</td>
-					<td>Total Value</td>
-					<td>Total hombres</td>
-					<td>Total mujeres</td>
-					<td>Total < 25</td>
-					<td>Total < 25 hombres</td>
-					<td>Total < 25 mujeres</td>
-					<td>Total > 25</td>
-					<td>Total > 25 hombres</td>
-					<td>Total > 25 mujeres</td>
+  					<td>@Messages.get("CA.Id")</td>
+					<td>@Messages.get("CA.Name")</td>
+					<td>@Messages.get("Total")</td>
+					<td>@Messages.get("TotalMen")</td>
+					<td>@Messages.get("TotalWomen")</td>
+					<td>@Messages.get("TotalUnder25")</td>
+					<td>@Messages.get("TotalMenUnder25")</td>
+					<td>@Messages.get("TotalWomenUnder25")</td>
+					<td>@Messages.get("TotalOver25")</td>
+					<td>@Messages.get("TotalMenOver25")</td>
+					<td>@Messages.get("TotalWomenOver25")</td>
 				</thead>
 
                 @for(communitie <- communities) {

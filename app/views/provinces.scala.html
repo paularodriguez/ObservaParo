@@ -1,22 +1,26 @@
 @(obs: List[ProvinceObservation])
-
+@import play.i18n._
 @main("Provinces") {  
 <tbody>
 	<table>
 				<thead>
-					<td>Province</td>
-					<td>Total Value</td>
-					<td>Total hombres</td>
-					<td>Total mujeres</td>
-					<td>Total < 25</td>
-					<td>Total < 25 hombres</td>
-					<td>Total < 25 mujeres</td>
-					<td>Total > 25</td>
-					<td>Total > 25 hombres</td>
-					<td>Total > 25 mujeres</td>
+					<td>@Messages.get("Province.Id")</td>
+					<td>@Messages.get("Province.Name")</td>
+					<td>@Messages.get("Total")</td>
+					<td>@Messages.get("TotalMen")</td>
+					<td>@Messages.get("TotalWomen")</td>
+					<td>@Messages.get("TotalUnder25")</td>
+					<td>@Messages.get("TotalMenUnder25")</td>
+					<td>@Messages.get("TotalWomenUnder25")</td>
+					<td>@Messages.get("TotalOver25")</td>
+					<td>@Messages.get("TotalMenOver25")</td>
+					<td>@Messages.get("TotalWomenOver25")</td>
 				</thead>
                 @for(o <- obs) {
                     <tr>
+                     	<td>
+                         	@o.province.id
+                        </td>
                         <td>
                          	@o.province.name
                         </td>

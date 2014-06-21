@@ -1,5 +1,5 @@
 	@(title: String)(content: Html)
-
+@import play.i18n._
 <!DOCTYPE html>
 
 <html>
@@ -13,13 +13,13 @@
     <header>
         	<a href="/"><img src="@routes.Assets.at("images/img_job.png")" alt="ObservaParoLogo" />
 			<h1> ObservaParo <h1>
-			<h2> Estadísticas del desempleo en España <h2>
+			<h2>@Messages.get("Subtitle")<h2>
 	</header>		
 			<nav>
 			<ul>
-				<li><a href="@routes.Application.index()">Inicio</a></li>
-				<li><a href="@routes.Application.showAutonomousCommunities()">Comunidades autónomas</a></li>
-				<li><a href="@routes.Application.showProvinces()">Provincias</a></li>
+				<li><a href="@routes.Application.index()">@Messages.get("Index")</a></li>
+				<li><a href="@routes.Application.showAutonomousCommunities()">@Messages.get("CAs")</a></li>
+				<li><a href="@routes.Application.showProvinces()">@Messages.get("Provinces")</a></li>
 				<li><a>Nuevos datos</a></li>
 		 	</ul>
 		 	</nav>
