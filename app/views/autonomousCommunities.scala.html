@@ -57,6 +57,16 @@
                     </tr>
                 }
     </table>
+    
+    <h2>GráficoBarras</h2>
+	<ul>
+	@for(acObs <- communities) {
+
+ 	<li><a href="@routes.Application.bars(acObs.id)">@acObs.autonomousCommunity.name</a></li>
+	
+	}
+	</ul>
+    
 
   </tbody>
 }

@@ -89,3 +89,46 @@ table thead tr td{
  #pagination ul li a:visited{
   	color:black;
  }
+main{
+	padding-left:50px;
+	float:left;
+}
+ 
+aside{
+ 	float:right;
+ 	width:25%;
+ 	border-color:#DCDCDC;
+ 	border-style:solid;
+ 	border-width:medium;
+}
+
+aside h3 {
+	text-align:center;	
+}
+
+aside ul li{
+	list-style-type:circle;	
+	margin:5px;
+}
+
+aside ul li a{
+  	color:black;
+  	text-decoration:none;
+ }
+ 
+table#left{
+	padding-left:160px;
+ 	float:left;
+ 	width:40%;
+ 	
+}
+
+table#right{
+	padding-right:160px;
+ 	float:right;
+ 	width:40%;
+ 	caption-side:top;
+}
+
+
+

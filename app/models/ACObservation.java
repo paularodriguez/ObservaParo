@@ -20,7 +20,7 @@ public class ACObservation extends Model {
 	public Long id;
 	@ManyToOne
 	public AutonomousCommunity autonomousCommunity;
-	
+
 	public Integer totalValue;
 	public Integer totalValueMen;
 	public Integer totalValueWomen;
@@ -37,11 +37,10 @@ public class ACObservation extends Model {
 	public static Model.Finder<Long, ACObservation> find = new Model.Finder<Long, ACObservation>(
 			Long.class, ACObservation.class);
 
-
 	public ACObservation() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public static List<ACObservation> all() {
 		return find.all();
 	}
@@ -54,6 +53,10 @@ public class ACObservation extends Model {
 		for (ACObservation obs : all()) {
 			obs.delete();
 		}
+	}
+
+	public static ACObservation findByCode(Long indicator) {
+		return find.byId(indicator);
 	}
 
 }

@@ -12,3 +12,8 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Observation list (look at the default values for pagination parameters)
 GET     /observation                  controllers.Application.list(p:Int ?= 0)
+
+GET     /bars/:indicator   			controllers.Application.bars(indicator:Long)
+
+GET		/api/observation/indicator/:indicator	controllers.Application.ACObservationByCode(indicator: Long)
+GET		/provinces/:indicator				controllers.Application.statistics(indicator: String, title: String)

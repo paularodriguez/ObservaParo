@@ -2,6 +2,8 @@
 @import play.i18n._
 @main("Provinces") {  
 <tbody>
+
+	<main>
 	<table>
 				<thead>
 					<td>@Messages.get("Province.Id")</td>
@@ -54,6 +56,22 @@
                     </tr>
                 }
 	</table>
-            </tbody>
-
+	</main>
+          
+     <aside>       
+      <h3>@Messages.get("Statistics")</h3>      
+     <ul>
+     	<li><a href="@routes.Application.statistics("pTotal",Messages.get("Total"))">@Messages.get("Total")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalMen",Messages.get("TotalMen"))">@Messages.get("TotalMen")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalWomen",Messages.get("TotalWomen"))">@Messages.get("TotalWomen")</a></li>
+		<li><a href="@routes.Application.statistics("pTotalUnder25",Messages.get("TotalUnder25"))">@Messages.get("TotalUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalMenUnder25",Messages.get("TotalMenUnder25"))">@Messages.get("TotalMenUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalWomenUnder25",Messages.get("TotalWomenUnder25"))">@Messages.get("TotalWomenUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalOver25",Messages.get("TotalOver25"))">@Messages.get("TotalOver25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalMenOver25",Messages.get("TotalMenOver25"))">@Messages.get("TotalMenOver25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalWomenOver25",Messages.get("TotalWomenOver25"))">@Messages.get("TotalWomenOver25")</a></li>
+     </ul>
+	</aside>
+	
+	  </tbody>
 }
