@@ -59,4 +59,8 @@ public class ACObservation extends Model {
 		return find.byId(indicator);
 	}
 
+	public static List<ACObservation> filterCommunities(String filter) {
+		return find.where().ilike("autonomousCommunity.name", "%" + filter + "%").findList();
+	}
+
 }

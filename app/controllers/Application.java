@@ -22,7 +22,7 @@ public class Application extends Controller {
 	 * Handle default path requests, redirect to computers list
 	 */
 	public static Result index() {
-		return list(0);
+		return list(0, "", "");
 	}
 
 	/**
@@ -31,16 +31,16 @@ public class Application extends Controller {
 	 * @param page
 	 *            Current page number (starts from 0)
 	 */
-	public static Result list(int page) {
-		return ok(index.render(HistoricObservation.page(page, 12)));
+	public static Result list(int page, String filterYear, String filterMonth) {
+		return ok(index.render(HistoricObservation.page(page, 12,filterYear,filterMonth ), filterYear, filterMonth));
 	}
 
-	public static Result showAutonomousCommunities() {
-		return ok(autonomousCommunities.render(ACObservation.all(), AutonomousCommunity.all()));
+	public static Result showAutonomousCommunities(String filter) {
+		return ok(autonomousCommunities.render(ACObservation.filterCommunities(filter), AutonomousCommunity.all(), filter));
 	}
 
-	public static Result showProvinces() {
-		return ok(provinces.render(ProvinceObservation.all()));
+	public static Result showProvinces(String filter) {
+		return ok(provinces.render(ProvinceObservation.filterProvinces(filter),filter));
 	}
 	
 	public static Result bars(Long indicator) {

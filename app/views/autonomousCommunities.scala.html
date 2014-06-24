@@ -1,7 +1,12 @@
-@(communities: List[ACObservation], cas: List[AutonomousCommunity])
+@(communities: List[ACObservation], cas: List[AutonomousCommunity], currentFilter:String)
 @import play.i18n._
 @main(Messages.get("CAs")) {  
 <tbody>
+
+		<form action="@routes.Application.showAutonomousCommunities("")" method="GET">
+            <input type="search" id="searchboxAC" name="f" value="@currentFilter" placeholder="@Messages.get("FilterCommunity")">
+            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn primary">
+        </form>	
 
   <table>
   				<thead>

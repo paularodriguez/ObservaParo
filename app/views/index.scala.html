@@ -1,12 +1,20 @@
-@(currentPage: com.avaje.ebean.Page[HistoricObservation])
+@(currentPage: com.avaje.ebean.Page[HistoricObservation],currentFilterYear: String,currentFilterMonth: String)
 @import play.i18n._
 
 @page(newPage:Int) = @{
  		// Generate the link
-		routes.Application.list(newPage)
+		routes.Application.list(newPage, currentFilterYear,currentFilterMonth)
 }
 
 @main(Messages.get("Historical")) {    
+		
+		<form action="@page(0)" method="GET">
+            <input type="search" id="searchboxYear" name="f" value="@currentFilterYear" placeholder="@Messages.get("FilterYear")">
+          	<input type="search" id="searchboxMonth" name="g" value="@currentFilterMonth" placeholder="@Messages.get("FilterMonth")">
+            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn primary">
+        </form>
+		
+
         <table>
             <thead>
                 <tr>

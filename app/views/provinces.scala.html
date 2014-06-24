@@ -1,9 +1,15 @@
-@(obs: List[ProvinceObservation])
+@(obs: List[ProvinceObservation], currentFilter: String)
 @import play.i18n._
 @main("Provinces") {  
 <tbody>
 
-	<main>
+	<main>	
+	
+		<form action="@routes.Application.showProvinces("")" method="GET">
+            <input type="search" id="searchboxProvince" name="f" value="@currentFilter" placeholder="@Messages.get("FilterProvince")">
+            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn primary">
+        </form>	
+	
 	<table>
 				<thead>
 					<td>@Messages.get("Province.Id")</td>

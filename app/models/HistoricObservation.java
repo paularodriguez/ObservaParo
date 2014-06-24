@@ -150,8 +150,8 @@ public class HistoricObservation extends Model {
 	 * @param pageSize
 	 *            Number of observations per page
 	 */
-	public static Page<HistoricObservation> page(int page, int pageSize) {
-		return find.where().findPagingList(pageSize).setFetchAhead(false).getPage(page);
+	public static Page<HistoricObservation> page(int page, int pageSize, String filterYear,String filterMonth) {
+		return find.where().ilike("year", "%" + filterYear + "%").ilike("month", "%" + filterMonth + "%").findPagingList(pageSize).setFetchAhead(false).getPage(page);
 	}
 
 	public int getYear() {

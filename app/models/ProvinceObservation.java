@@ -259,4 +259,8 @@ public class ProvinceObservation extends Model {
 					underAverageList.add(o);		}
 		return underAverageList;
 	}
+
+	public static List<ProvinceObservation> filterProvinces(String filter) {
+		return find.where().ilike("province.name", "%" + filter + "%").findList();
+	}
 }
