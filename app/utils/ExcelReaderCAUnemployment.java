@@ -70,7 +70,7 @@ public class ExcelReaderCAUnemployment {
 								value = "Principado de Asturias";
 								break;
 							case "ILLES BALEARS":
-								value = "Illes Balears ";
+								value = "Illes Balears";
 								break;
 							case "CANARIAS":
 								value = "Canarias";

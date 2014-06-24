@@ -1,8 +1,8 @@
-@(communities: List[ACObservation], cas: List[AutonomousCommunity], currentFilter:String)
+@(communities: List[ACObservation], currentFilter:String)
 @import play.i18n._
 @main(Messages.get("CAs")) {  
 <tbody>
-
+	<main>	
 		<form action="@routes.Application.showAutonomousCommunities("")" method="GET">
             <input type="search" id="searchboxAC" name="f" value="@currentFilter" placeholder="@Messages.get("FilterCommunity")">
             <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn primary">
@@ -62,17 +62,22 @@
                     </tr>
                 }
     </table>
+    </main>
     
-    <h2>GráficoBarras</h2>
-	<ul>
-	@for(acObs <- communities) {
-
- 	<li><a href="@routes.Application.bars(acObs.id)">@acObs.autonomousCommunity.name</a></li>
-	
-	}
-	</ul>
-    
-
+     <aside>       
+      <h3>@Messages.get("Statistics")</h3>      
+     <ul>
+     	<li><a href="@routes.Application.statistics("acTotal",Messages.get("Total"))">@Messages.get("Total")</a></li>
+     	<li><a href="@routes.Application.statistics("acTotalMen",Messages.get("TotalMen"))">@Messages.get("TotalMen")</a></li>
+     	<li><a href="@routes.Application.statistics("acTotalWomen",Messages.get("TotalWomen"))">@Messages.get("TotalWomen")</a></li>
+		<li><a href="@routes.Application.statistics("acTotalUnder25",Messages.get("TotalUnder25"))">@Messages.get("TotalUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("acTotalMenUnder25",Messages.get("TotalMenUnder25"))">@Messages.get("TotalMenUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("acTotalWomenUnder25",Messages.get("TotalWomenUnder25"))">@Messages.get("TotalWomenUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("acTotalOver25",Messages.get("TotalOver25"))">@Messages.get("TotalOver25")</a></li>
+     	<li><a href="@routes.Application.statistics("acTotalMenOver25",Messages.get("TotalMenOver25"))">@Messages.get("TotalMenOver25")</a></li>
+     	<li><a href="@routes.Application.statistics("acTotalWomenOver25",Messages.get("TotalWomenOver25"))">@Messages.get("TotalWomenOver25")</a></li>
+     </ul>
+	</aside>	
   </tbody>
 }
 

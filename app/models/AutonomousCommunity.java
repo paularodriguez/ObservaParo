@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 /**
@@ -76,6 +77,13 @@ public class AutonomousCommunity extends Model {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public static void deleteAll() {
+		for (AutonomousCommunity a: all()) {
+			a.delete();
+		}
+		
 	}	  
 
 }

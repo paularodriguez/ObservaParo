@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import models.ACObservation;
-import models.AutonomousCommunity;
 import models.HistoricObservation;
 import models.ProvinceObservation;
 import play.libs.Json;
@@ -36,7 +35,7 @@ public class Application extends Controller {
 	}
 
 	public static Result showAutonomousCommunities(String filter) {
-		return ok(autonomousCommunities.render(ACObservation.filterCommunities(filter), AutonomousCommunity.all(), filter));
+		return ok(autonomousCommunities.render(ACObservation.filterCommunities(filter),filter));
 	}
 
 	public static Result showProvinces(String filter) {
@@ -54,12 +53,20 @@ public class Application extends Controller {
 	
 	public static Result statistics(String indicator, String title){
 		Map<String,Object> values = new HashMap<String, Object>();
-		if (indicator.startsWith("p"))
+		if (indicator.startsWith("p")){
 				values = ProvinceObservation.getTotalStatistics(indicator);
-		Double average = (Double) values.get("average");
-		ProvinceObservation.observationsOverAverageValue(average, indicator);
-		ProvinceObservation.observationsUnderAverageValue(average, indicator);
-		return ok(statistics.render(title,values,ProvinceObservation.observationsOverAverageValue(average, indicator),ProvinceObservation.observationsUnderAverageValue(average, indicator)));
+				Double average = (Double) values.get("average");
+				ProvinceObservation.observationsOverAverageValue(average, indicator);
+				ProvinceObservation.observationsUnderAverageValue(average, indicator);
+				return ok(statistics.render(title,values,ProvinceObservation.observationsOverAverageValue(average, indicator),ProvinceObservation.observationsUnderAverageValue(average, indicator), null, null));
+		}
+		else{
+				values = ACObservation.getTotalStatistics(indicator);
+				Double average = (Double) values.get("average");
+				ProvinceObservation.observationsOverAverageValue(average, indicator);
+				ProvinceObservation.observationsUnderAverageValue(average, indicator);
+				return ok(statistics.render(title,values,null, null, ACObservation.observationsOverAverageValue(average, indicator),ACObservation.observationsUnderAverageValue(average, indicator)));
+		}
 	}
 	
 }

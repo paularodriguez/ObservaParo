@@ -128,7 +128,7 @@ public class ProvinceObservation extends Model {
 				}
 		}
 		values.put("minValue", minValue);
-		values.put("minValueProvince", minObs.province.name);
+		values.put("minValueZone", minObs.province.name);
 		return values;
 	}
 
@@ -185,11 +185,11 @@ public class ProvinceObservation extends Model {
 				}
 		}
 		values.put("maxValue", maxValue);
-		values.put("maxValueProvince", maxObs.province.name);
+		values.put("maxValueZone", maxObs.province.name);
 		return values;
 	}
 
-	public static Double average(List<ProvinceObservation> observations,
+	private static Double average(List<ProvinceObservation> observations,
 			String indicator) {
 		Double sum = 0.0;
 		for (ProvinceObservation obs : observations) {
@@ -218,10 +218,35 @@ public class ProvinceObservation extends Model {
 	public static List<ProvinceObservation> observationsOverAverageValue(
 			Double average, String indicator) {
 		List<ProvinceObservation> overAverageList = new ArrayList<>();
-		for (ProvinceObservation o : ProvinceObservation.all()) {
-			if (o.totalValue > average) {
-				overAverageList.add(o);
-			}
+		for (ProvinceObservation o : ProvinceObservation.find.orderBy(
+				"province.id").findList()) {
+			if (indicator.equals("pTotal"))
+				if (o.totalValue > average)
+					overAverageList.add(o);
+			if (indicator.equals("pTotalMen"))
+				if (o.totalValueMen > average)
+					overAverageList.add(o);
+			if (indicator.equals("pTotalWomen"))
+				if (o.totalValueWomen > average)
+					overAverageList.add(o);
+			if (indicator.equals("pTotalUnder25"))
+				if (o.totalValueUnder25 > average)
+					overAverageList.add(o);
+			if (indicator.equals("pTotalMenUnder25"))
+				if (o.valueMenUnder25 > average)
+					overAverageList.add(o);
+			if (indicator.equals("pTotalWomenUnder25"))
+				if (o.valueWomenUnder25 > average)
+					overAverageList.add(o);
+			if (indicator.equals("pTotalOver25"))
+				if (o.totalValueOver25 > average)
+					overAverageList.add(o);
+			if (indicator.equals("pTotalMenOver25"))
+				if (o.valueMenOver25 > average)
+					overAverageList.add(o);
+			if (indicator.equals("pTotalWomenOver25"))
+				if (o.valueWomenOver25 > average)
+					overAverageList.add(o);
 		}
 		return overAverageList;
 	}
@@ -229,7 +254,8 @@ public class ProvinceObservation extends Model {
 	public static List<ProvinceObservation> observationsUnderAverageValue(
 			Double average, String indicator) {
 		List<ProvinceObservation> underAverageList = new ArrayList<>();
-		for (ProvinceObservation o : ProvinceObservation.all()) {
+		for (ProvinceObservation o : ProvinceObservation.find.orderBy(
+				"province.id").findList()) {
 			if (indicator.equals("pTotal"))
 				if (o.totalValue < average)
 					underAverageList.add(o);
@@ -252,15 +278,17 @@ public class ProvinceObservation extends Model {
 				if (o.totalValueOver25 < average)
 					underAverageList.add(o);
 			if (indicator.equals("pTotalMenOver25"))
-				if (o.valueMenOver25< average)
+				if (o.valueMenOver25 < average)
 					underAverageList.add(o);
 			if (indicator.equals("pTotalWomenOver25"))
 				if (o.valueWomenOver25 < average)
-					underAverageList.add(o);		}
+					underAverageList.add(o);
+		}
 		return underAverageList;
 	}
 
 	public static List<ProvinceObservation> filterProvinces(String filter) {
-		return find.where().ilike("province.name", "%" + filter + "%").findList();
+		return find.orderBy("province.id").where()
+				.ilike("province.name", "%" + filter + "%").findList();
 	}
 }

@@ -25,12 +25,10 @@ public class Global extends GlobalSettings {
 
 	static class InitialData {
 		public static void insert(Application app) {
-			HistoricObservation.deleteAll();
-			if (HistoricObservation.all().isEmpty()) {
+			
 				List<AutonomousCommunity> autonomousCommunities;
 				List<ACObservation> autonomousCommunitiesObservations;
 				List<HistoricObservation> historicObservations;
-				
 				List<Province> provinces;
 				List<ProvinceObservation> provinceObservations;
 				try {
@@ -57,7 +55,7 @@ public class Global extends GlobalSettings {
 					e.printStackTrace();
 				}
 
-			}
+			
 		}
 	}
 }

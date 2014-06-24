@@ -25,7 +25,6 @@ public class Province extends Model {
 
 	@Id
 	public String id;
-
 	public String name;
 
 	/**
@@ -59,7 +58,6 @@ public class Province extends Model {
 	public static Province findByName(String name) {
 		return find.where().eq("name", name).findUnique();
 	}
-
 	
 	public static List<Province> all() {
 		return find.all();

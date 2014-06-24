@@ -1,4 +1,4 @@
-@(title:String, statistics: Map[String,Object], pObsOver:List[ProvinceObservation], pObsUnder:List[ProvinceObservation])
+@(title:String, statistics: Map[String,Object], pObsOver:List[ProvinceObservation], pObsUnder:List[ProvinceObservation],acObsOver:List[ACObservation], acObsUnder:List[ACObservation])
 
 @import play.i18n._
 
@@ -6,10 +6,11 @@
 
 <ul>
 <li>@Messages.get("Average"): @statistics.get("average") </li>
-<li>@Messages.get("Max"): @statistics.get("maxValue") - @Messages.get("Province.Name"): @statistics.get("maxValueProvince")</li>
-<li>@Messages.get("Min"): @statistics.get("minValue") - @Messages.get("Province.Name"): @statistics.get("minValueProvince")</li>
+<li>@Messages.get("Max"): @statistics.get("maxValue") - @statistics.get("maxValueZone")</li>
+<li>@Messages.get("Min"): @statistics.get("minValue") - @statistics.get("minValueZone")</li>
 </ul>
 
+@if(pObsOver != null &&pObsUnder !=null){
 	<table id="left">
 		<thead>
 			<tr><td colspan="2">@Messages.get("ProvincesUnderAverage")</td></tr>
@@ -51,5 +52,52 @@
 		}
 		</tbody>
 	</table>
+	}
+	
+@if(acObsOver != null && acObsUnder !=null){	
+	
+	<table id="left">
+		<thead>
+			<tr><td colspan="2">@Messages.get("ACUnderAverage")</td></tr>
+			<tr>
+			<td>@Messages.get("CA.Id")</td>
+			<td>@Messages.get("CA.Name")</td>
+			</tr>
+		</thead>
+		<tbody>
+   		@for(o <- acObsUnder) {
+            <tr>
+               	<td>
+      				@o.autonomousCommunity.id
+                </td>
+                <td>
+                    @o.autonomousCommunity.name
+                </td>
+		}
+		</tbody>
+	</table>
+	
+	<table id="right">
+	<thead>
+		<tr><td colspan="2">@Messages.get("ACOverAverage")</td></tr>
+		<tr>
+		<td>@Messages.get("CA.Id")</td>
+		<td>@Messages.get("CA.Name")</td>
+		</tr>
+	</thead>
+		<tbody>
+   		@for(o <- acObsOver) {
+            <tr>
+               	<td>
+      				@o.autonomousCommunity.id
+                </td>
+                <td>
+                    @o.autonomousCommunity.name
+                </td>
+		}
+		</tbody>
+	</table>
+	
+	}
 	
 }
