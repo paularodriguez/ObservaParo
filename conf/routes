@@ -17,3 +17,16 @@ GET     /bars/:indicator   			controllers.Application.bars(indicator:Long)
 
 GET		/api/observation/indicator/:indicator	controllers.Application.ACObservationByCode(indicator: Long)
 GET		/provinces/:indicator				controllers.Application.statistics(indicator: String, title: String)
+
+#API
+GET		/api/autonomouscommunities					controllers.API.autonomousCommunities()
+GET		/api/autonomouscommunity/:code				controllers.API.autonomousCommunity(code: String)
+GET		/api/provinces								controllers.API.provinces()
+GET		/api/province/:code							controllers.API.province(code: String)
+GET		/api/acobservations							controllers.API.ACObservations()
+GET		/api/provinceobservations					controllers.API.provinceObservations()
+GET		/api/acobservation/community/:code			controllers.API.ACObservationsByCommunityID(code:String)
+GET		/api/acobservation/communityname/:code		controllers.API.ACObservationsByCommunityName(code:String)
+GET		/api/provinceobservation/province/:code		controllers.API.provinceObservationsByProvinceID(code:String)
+GET		/api/provinceobservation/provincename/:code		controllers.API.provinceObservationsByProvinceName(code:String)
+

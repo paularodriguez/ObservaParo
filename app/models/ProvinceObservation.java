@@ -291,4 +291,12 @@ public class ProvinceObservation extends Model {
 		return find.orderBy("province.id").where()
 				.ilike("province.name", "%" + filter + "%").findList();
 	}
+
+	public static ProvinceObservation findByProvinceId(String provinceId) {
+		return find.where().eq("province.id", provinceId).findUnique();
+	}
+
+	public static ProvinceObservation findByProvinceName(String provinceName) {
+		return find.where().eq("province.name", provinceName).findUnique();
+	}
 }

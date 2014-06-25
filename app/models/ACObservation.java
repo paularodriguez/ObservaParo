@@ -214,7 +214,7 @@ public class ACObservation extends Model {
 		}
 		return sum / observations.size();
 	}
-	
+
 	public static List<ACObservation> observationsOverAverageValue(
 			Double average, String indicator) {
 		List<ACObservation> overAverageList = new ArrayList<>();
@@ -250,7 +250,7 @@ public class ACObservation extends Model {
 		}
 		return overAverageList;
 	}
-	
+
 	public static List<ACObservation> observationsUnderAverageValue(
 			Double average, String indicator) {
 		List<ACObservation> underAverageList = new ArrayList<>();
@@ -285,6 +285,15 @@ public class ACObservation extends Model {
 					underAverageList.add(o);
 		}
 		return underAverageList;
+	}
+
+	public static ACObservation findByACId(String acId) {
+		return find.where().eq("autonomousCommunity.id", acId).findUnique();
+	}
+
+	public static ACObservation findByACName(String acName) {
+		return find.where().eq("autonomousCommunity.name", acName).findUnique();
+
 	}
 
 }

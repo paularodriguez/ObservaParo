@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 /**
@@ -80,10 +79,14 @@ public class AutonomousCommunity extends Model {
 	}
 
 	public static void deleteAll() {
-		for (AutonomousCommunity a: all()) {
+		for (AutonomousCommunity a : all()) {
 			a.delete();
 		}
-		
-	}	  
+
+	}
+
+	public static Object findByCode(String code) {
+		return find.where().eq("id", code).findUnique();
+	}
 
 }
