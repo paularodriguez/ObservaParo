@@ -14,6 +14,7 @@ import utils.ExcelReaderCAUnemployment;
 import utils.ExcelReaderProvinceUnemployment;
 import utils.ExcelReaderSectorUnemploymentEvolution;
 import utils.ProvinceCreator;
+import utils.URLLoader;
 
 import com.avaje.ebean.Ebean;
 
@@ -25,37 +26,49 @@ public class Global extends GlobalSettings {
 
 	static class InitialData {
 		public static void insert(Application app) {
-			
-				List<AutonomousCommunity> autonomousCommunities;
-				List<ACObservation> autonomousCommunitiesObservations;
-				List<HistoricObservation> historicObservations;
-				List<Province> provinces;
-				List<ProvinceObservation> provinceObservations;
-				try {
-					historicObservations = new ExcelReaderSectorUnemploymentEvolution()
-							.read(new FileInputStream(new File(
-									"documents/evolparoseries.xls")));
-					Ebean.save(historicObservations);
-					autonomousCommunities = new ACCreator()
-							.read(new FileInputStream(new File(
-									"documents/list-pro.xls")));
-					Ebean.save(autonomousCommunities);
-					provinces = new ProvinceCreator().read(new FileInputStream(
-							new File("documents/list-pro.xls")));
-					Ebean.save(provinces);
-					autonomousCommunitiesObservations = new ExcelReaderCAUnemployment().read(new FileInputStream(new File(
-									"documents/parosexoedadprov.xls")));
-					Ebean.save(autonomousCommunitiesObservations);
-					provinceObservations = new ExcelReaderProvinceUnemployment().read(new FileInputStream(new File(
-									"documents/parosexoedadprov.xls")));
-					Ebean.save(provinceObservations);
+			checkDocumentAge();
 
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			List<AutonomousCommunity> autonomousCommunities;
+			List<ACObservation> autonomousCommunitiesObservations;
+			List<HistoricObservation> historicObservations;
+			List<Province> provinces;
+			List<ProvinceObservation> provinceObservations;
+			try {
+				historicObservations = new ExcelReaderSectorUnemploymentEvolution()
+						.read(new FileInputStream(new File(
+								"documents/evolparoseries.xls")));
+				Ebean.save(historicObservations);
+				autonomousCommunities = new ACCreator()
+						.read(new FileInputStream(new File(
+								"documents/list-pro.xls")));
+				Ebean.save(autonomousCommunities);
+				provinces = new ProvinceCreator().read(new FileInputStream(
+						new File("documents/list-pro.xls")));
+				Ebean.save(provinces);
+				autonomousCommunitiesObservations = new ExcelReaderCAUnemployment()
+						.read(new FileInputStream(new File(
+								"documents/parosexoedadprov.xls")));
+				Ebean.save(autonomousCommunitiesObservations);
+				provinceObservations = new ExcelReaderProvinceUnemployment()
+						.read(new FileInputStream(new File(
+								"documents/parosexoedadprov.xls")));
+				Ebean.save(provinceObservations);
 
-			
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		private static void checkDocumentAge() {
+			File file = new File("documents/evolparoseries.xls");
+			long now = System.currentTimeMillis();
+			// When time without update is about 15 days
+			if (file.lastModified() - now > 1300000000) {
+				// Update documents
+				URLLoader.downloader();
+			}
 		}
 	}
 }

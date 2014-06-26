@@ -26,7 +26,7 @@ public class HistoricObservation extends Model {
 
 	@Required
 	public int year;
-	
+
 	@Required
 	public String month;
 
@@ -42,23 +42,25 @@ public class HistoricObservation extends Model {
 	public static Model.Finder<Long, HistoricObservation> find = new Model.Finder<Long, HistoricObservation>(
 			Long.class, HistoricObservation.class);
 
-
 	public HistoricObservation() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static HistoricObservation create(Double obsValue, String month, Double agricultureSector) {
-		HistoricObservation observation = new HistoricObservation(obsValue, month, agricultureSector);
+	public static HistoricObservation create(Double obsValue, String month,
+			Double agricultureSector) {
+		HistoricObservation observation = new HistoricObservation(obsValue,
+				month, agricultureSector);
 		observation.save();
 		return observation;
 	}
-	
-	public HistoricObservation (double obsValue, String month, double agricultureSector) {
+
+	public HistoricObservation(double obsValue, String month,
+			double agricultureSector) {
 		this.obsValue = obsValue;
 		this.month = month;
 		this.agricultureSector = agricultureSector;
 	}
-	
+
 	public static List<HistoricObservation> all() {
 		return find.all();
 	}
@@ -150,8 +152,11 @@ public class HistoricObservation extends Model {
 	 * @param pageSize
 	 *            Number of observations per page
 	 */
-	public static Page<HistoricObservation> page(int page, int pageSize, String filterYear,String filterMonth) {
-		return find.where().ilike("year", "%" + filterYear + "%").ilike("month", "%" + filterMonth + "%").findPagingList(pageSize).setFetchAhead(false).getPage(page);
+	public static Page<HistoricObservation> page(int page, int pageSize,
+			String filterYear, String filterMonth) {
+		return find.where().ilike("year", "%" + filterYear + "%")
+				.ilike("month", "%" + filterMonth + "%")
+				.findPagingList(pageSize).setFetchAhead(false).getPage(page);
 	}
 
 	public int getYear() {
@@ -160,6 +165,14 @@ public class HistoricObservation extends Model {
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public static List<HistoricObservation> findByYear(int year) {
+		return find.where().eq("year", year).findList();
+	}
+
+	public static List<HistoricObservation> findByMonth(String month) {
+		return find.where().eq("month", month.toUpperCase()).findList();
 	}
 
 }

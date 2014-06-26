@@ -38,8 +38,8 @@ public class ExcelReaderSectorUnemploymentEvolution {
 			// For each row, iterate through all the columns
 			Iterator<Cell> cellIterator = row.cellIterator();
 			
-			// Util data start at line 5 and finish at line 126
-			if (row.getRowNum() > 4 && row.getRowNum() < 126) {
+			// Util data start at line 5 and finish when no data
+			if (row.getRowNum() > 4 && row.getPhysicalNumberOfCells()>0) {
 				obs = new HistoricObservation();
 				obs.setYear(year);
 				while (cellIterator.hasNext()) {

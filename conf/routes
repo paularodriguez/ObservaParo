@@ -29,4 +29,7 @@ GET		/api/acobservation/community/:code			controllers.API.ACObservationsByCommun
 GET		/api/acobservation/communityname/:code		controllers.API.ACObservationsByCommunityName(code:String)
 GET		/api/provinceobservation/province/:code		controllers.API.provinceObservationsByProvinceID(code:String)
 GET		/api/provinceobservation/provincename/:code		controllers.API.provinceObservationsByProvinceName(code:String)
+GET		/api/historicobservations					controllers.API.historicObservations()
+GET		/api/historicobservations/year/:code		controllers.API.historicObservationsByYear(code: Integer)
+GET		/api/historicobservations/month/:code		controllers.API.historicObservationsByMonth(code: String)
 
