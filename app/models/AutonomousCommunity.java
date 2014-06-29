@@ -1,8 +1,6 @@
 package models;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -39,20 +37,6 @@ public class AutonomousCommunity extends Model {
 	 */
 	public static Model.Finder<Long, AutonomousCommunity> find = new Model.Finder<Long, AutonomousCommunity>(
 			Long.class, AutonomousCommunity.class);
-
-	/**
-	 * Query thats allowed the capability to order the list
-	 * 
-	 * @return
-	 */
-	public static Map<String, String> options() {
-		LinkedHashMap<String, String> options = new LinkedHashMap<String, String>();
-		for (AutonomousCommunity c : AutonomousCommunity.find.orderBy("name")
-				.findList()) {
-			options.put(c.getId().toString(), c.getName());
-		}
-		return options;
-	}
 
 	public String getId() {
 		return id;

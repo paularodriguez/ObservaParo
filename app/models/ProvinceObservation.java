@@ -49,10 +49,6 @@ public class ProvinceObservation extends Model {
 		return find.all();
 	}
 
-	public static void delete(Long id) {
-		find.ref(id).delete();
-	}
-
 	public static void deleteAll() {
 		for (ProvinceObservation obs : all()) {
 			obs.delete();

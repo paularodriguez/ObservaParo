@@ -1,7 +1,6 @@
 @(obs: List[ProvinceObservation], currentFilter: String)
 @import play.i18n._
 @main(Messages.get("Provinces")) {  
-<tbody>
 	<form class="filters" action="@routes.Application.showProvinces("")" method="GET">
             <input type="search" id="searchboxProvince" name="f" value="@currentFilter" placeholder="@Messages.get("FilterProvince")"	>
             <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn">
@@ -76,6 +75,4 @@
      	<li><a href="@routes.Application.statistics("pTotalWomenOver25",Messages.get("TotalWomenOver25"))">@Messages.get("TotalWomenOver25")</a></li>
      </ul>
 	</aside>
-	
-	  </tbody>
 }

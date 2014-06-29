@@ -1,8 +1,6 @@
 @(communities: List[ACObservation], currentFilter:String)
 @import play.i18n._
 @main(Messages.get("CAs")) {  
-<tbody>
-
 	<form class ="filters" action="@routes.Application.showAutonomousCommunities("")" method="GET">
             <input type="search" id="searchboxAC" name="f" value="@currentFilter" placeholder="@Messages.get("FilterCommunity")">
             <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn">
@@ -78,10 +76,6 @@
      	<li><a href="@routes.Application.statistics("acTotalMenOver25",Messages.get("TotalMenOver25"))">@Messages.get("TotalMenOver25")</a></li>
      	<li><a href="@routes.Application.statistics("acTotalWomenOver25",Messages.get("TotalWomenOver25"))">@Messages.get("TotalWomenOver25")</a></li>
      </ul>
-	</aside>
-  </tbody>
-  
-  
-  
+	</aside> 
 }
 

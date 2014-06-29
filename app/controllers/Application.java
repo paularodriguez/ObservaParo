@@ -10,7 +10,6 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.autonomousCommunities;
-import views.html.bars;
 import views.html.index;
 import views.html.provinces;
 import views.html.statistics;
@@ -43,10 +42,6 @@ public class Application extends Controller {
 	public static Result showProvinces(String filter) {
 		return ok(provinces.render(ProvinceObservation.filterProvinces(filter),filter));
 	}
-	
-	public static Result bars(Long indicator) {
-    	return ok(bars.render(ACObservation.findByCode(indicator)));
-    }
 	
 	public static Result ACObservationByCode(Long code) {
 		ACObservation aC = ACObservation.findByCode(code);

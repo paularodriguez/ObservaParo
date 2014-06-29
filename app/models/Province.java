@@ -1,8 +1,6 @@
 package models;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -40,19 +38,6 @@ public class Province extends Model {
 	}
 
 	public Province() {
-	}
-
-	/**
-	 * Query thats allowed the capability to order the list
-	 * 
-	 * @return
-	 */
-	public static Map<String, String> options() {
-		LinkedHashMap<String, String> options = new LinkedHashMap<String, String>();
-		for (Province c : Province.find.orderBy("name").findList()) {
-			options.put(c.id.toString(), c.name);
-		}
-		return options;
 	}
 
 	public static Province findByName(String name) {

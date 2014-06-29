@@ -7,7 +7,6 @@
 }
 
 @main(Messages.get("Historical")) {
-<tbody>
 		
 		<form class="filters" action="@page(0)" method="GET">
             <input type="search" id="searchboxYear" name="f" value="@currentFilterYear" placeholder="@Messages.get("FilterYear")">
@@ -100,5 +99,4 @@
 		<li><a href="@routes.Application.sectorStatistics("withoutEmploy", Messages.get("WithoutEmploy"))">@Messages.get("WithoutEmploy")</a></li>
      </ul>
 	</aside>
-<tbody>
 }

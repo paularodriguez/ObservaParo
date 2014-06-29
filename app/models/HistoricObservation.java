@@ -67,10 +67,6 @@ public class HistoricObservation extends Model {
 		return find.all();
 	}
 
-	public static void delete(Long id) {
-		find.ref(id).delete();
-	}
-
 	public static void deleteAll() {
 		for (HistoricObservation obs : all()) {
 			obs.delete();

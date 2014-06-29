@@ -77,10 +77,5 @@ public class API extends Controller {
     	List<HistoricObservation> obsList = HistoricObservation.findByMonth(month);
     	return ok(Json.toJson(obsList));
     }
-    
-/*    public static Result historicObservationsBySector(String sectorName) {
-    	List<HistoricObservation> obsList = HistoricObservation.findBySector(sectorName);
-    	return ok(Json.toJson(obsList));
-    }*/
 
 }
