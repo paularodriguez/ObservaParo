@@ -148,5 +148,63 @@ h2#sectionTitle{
 	font-family: Georgia, Cambria, Times, "Times New Roman", serif;
 }
 
+.filters{
+	margin-left: 170px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
 
+.filters{
+	margin-left: 170px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.btn {
+	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	box-shadow:inset 0px 1px 0px 0px #f5978e;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #CD5C5C), color-stop(1, #c62d1f) );
+	background:-moz-linear-gradient( center top, #CD5C5C 5%, #c62d1f 100% );
+	background-color:#CD5C5C;
+	-webkit-border-top-left-radius:20px;
+	-moz-border-radius-topleft:20px;
+	border-top-left-radius:20px;
+	-webkit-border-top-right-radius:20px;
+	-moz-border-radius-topright:20px;
+	border-top-right-radius:20px;
+	-webkit-border-bottom-right-radius:20px;
+	-moz-border-radius-bottomright:20px;
+	border-bottom-right-radius:20px;
+	-webkit-border-bottom-left-radius:20px;
+	-moz-border-radius-bottomleft:20px;
+	border-bottom-left-radius:20px;
+	text-indent:0;
+	border:1px solid #d02718;
+	font-size:15px;
+	height:30px;
+	width:100px;
+	text-decoration:none;
+	text-align:center;
+}
+
+.btn:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+	background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+	background-color:#c62d1f;
+}
+
+input{
+	padding: 5px;
+	border : 1px solid #000000;
+}
+
+table#statistics{
+	width:500px;
+	height:90px;	
+}
+
+td#title{
+	background-color:#D3D3D3;	
+}
 

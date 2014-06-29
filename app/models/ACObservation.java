@@ -69,7 +69,9 @@ public class ACObservation extends Model {
 
 	public static Map<String, Object> getTotalStatistics(String indicator) {
 		Map<String, Object> values = new HashMap<String, Object>();
-		values.put("average", (average(ACObservation.all(), indicator)));
+		values.put(
+				"average",
+				Math.rint((average(ACObservation.all(), indicator)) * 100) / 100);
 		values = maxValue(ACObservation.all(), indicator, values);
 		values = minValue(ACObservation.all(), indicator, values);
 		return values;

@@ -37,20 +37,6 @@ create table historic_observation (
   constraint pk_historic_observation primary key (id))
 ;
 
-create table observation (
-  id                        bigint not null,
-  obs_value                 double,
-  month                     varchar(255),
-  agriculture_sector        double,
-  industry_sector           double,
-  building_sector           double,
-  services_sector           double,
-  without_employ            double,
-  autonomous_community      varchar(255),
-  province                  varchar(255),
-  constraint pk_observation primary key (id))
-;
-
 create table province (
   id                        varchar(255) not null,
   name                      varchar(255),
@@ -78,8 +64,6 @@ create sequence autonomous_community_seq;
 
 create sequence historic_observation_seq;
 
-create sequence observation_seq;
-
 create sequence province_seq;
 
 create sequence province_observation_seq;
@@ -101,8 +85,6 @@ drop table if exists autonomous_community;
 
 drop table if exists historic_observation;
 
-drop table if exists observation;
-
 drop table if exists province;
 
 drop table if exists province_observation;
@@ -114,8 +96,6 @@ drop sequence if exists acobservation_seq;
 drop sequence if exists autonomous_community_seq;
 
 drop sequence if exists historic_observation_seq;
-
-drop sequence if exists observation_seq;
 
 drop sequence if exists province_seq;
 

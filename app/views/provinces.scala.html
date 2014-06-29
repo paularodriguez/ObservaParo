@@ -2,14 +2,12 @@
 @import play.i18n._
 @main(Messages.get("Provinces")) {  
 <tbody>
+	<form class="filters" action="@routes.Application.showProvinces("")" method="GET">
+            <input type="search" id="searchboxProvince" name="f" value="@currentFilter" placeholder="@Messages.get("FilterProvince")"	>
+            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn">
+	</form>	
 
 	<main>	
-	
-		<form action="@routes.Application.showProvinces("")" method="GET">
-            <input type="search" id="searchboxProvince" name="f" value="@currentFilter" placeholder="@Messages.get("FilterProvince")"	>
-            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn primary">
-        </form>	
-	
 	<table>
 				<thead>
 					<td>@Messages.get("Province.Id")</td>

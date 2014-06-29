@@ -6,14 +6,15 @@
 		routes.Application.list(newPage, currentFilterYear,currentFilterMonth)
 }
 
-@main(Messages.get("Historical")) {    
+@main(Messages.get("Historical")) {
+<tbody>
 		
-		<form action="@page(0)" method="GET">
+		<form class="filters" action="@page(0)" method="GET">
             <input type="search" id="searchboxYear" name="f" value="@currentFilterYear" placeholder="@Messages.get("FilterYear")">
           	<input type="search" id="searchboxMonth" name="g" value="@currentFilterMonth" placeholder="@Messages.get("FilterMonth")">
-            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn primary">
+            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn">
         </form>
-		
+		<main>
 
         <table>
             <thead>
@@ -86,4 +87,18 @@
                 }
             </ul>
            <div>
+      </main>     
+                
+     <aside>       
+      <h3>@Messages.get("Statistics")</h3>      
+     <ul>
+     	<li><a href="@routes.Application.sectorStatistics("totalValue",Messages.get("TotalValue"))">@Messages.get("TotalValue")</a></li>
+     	<li><a href="@routes.Application.sectorStatistics("agricultureSector",Messages.get("AgricultureSector"))">@Messages.get("AgricultureSector")</a></li>
+     	<li><a href="@routes.Application.sectorStatistics("industrySector", Messages.get("IndustrySector"))">@Messages.get("IndustrySector")</a></li>
+     	<li><a href="@routes.Application.sectorStatistics("buildingSector", Messages.get("BuildingSector"))">@Messages.get("BuildingSector")</a></li>
+     	<li><a href="@routes.Application.sectorStatistics("servicesSector", Messages.get("ServicesSector"))">@Messages.get("ServicesSector")</a></li>
+		<li><a href="@routes.Application.sectorStatistics("withoutEmploy", Messages.get("WithoutEmploy"))">@Messages.get("WithoutEmploy")</a></li>
+     </ul>
+	</aside>
+<tbody>
 }

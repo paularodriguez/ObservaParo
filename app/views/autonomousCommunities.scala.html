@@ -2,13 +2,14 @@
 @import play.i18n._
 @main(Messages.get("CAs")) {  
 <tbody>
-	<main>	
-		<form action="@routes.Application.showAutonomousCommunities("")" method="GET">
-            <input type="search" id="searchboxAC" name="f" value="@currentFilter" placeholder="@Messages.get("FilterCommunity")">
-            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn primary">
-        </form>	
 
-  <table>
+	<form class ="filters" action="@routes.Application.showAutonomousCommunities("")" method="GET">
+            <input type="search" id="searchboxAC" name="f" value="@currentFilter" placeholder="@Messages.get("FilterCommunity")">
+            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn">
+     </form>	
+
+	<main>	
+  	<table>
   				<thead>
   					<td>@Messages.get("CA.Id")</td>
 					<td>@Messages.get("CA.Name")</td>

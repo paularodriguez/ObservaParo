@@ -15,8 +15,10 @@ GET     /observation                  controllers.Application.list(p:Int ?= 0, f
 
 GET     /bars/:indicator   			controllers.Application.bars(indicator:Long)
 
-GET		/api/observation/indicator/:indicator	controllers.Application.ACObservationByCode(indicator: Long)
-GET		/provinces/:indicator				controllers.Application.statistics(indicator: String, title: String)
+GET		/api/observation/indicator/:indicator		controllers.Application.ACObservationByCode(indicator: Long)
+GET		/provinces/:indicator						controllers.Application.statistics(indicator: String, title: String)
+
+GET 	/sectorStatistics							controllers.Application.sectorStatistics(indicator:String, title:String)
 
 #API
 GET		/api/autonomouscommunities					controllers.API.autonomousCommunities()

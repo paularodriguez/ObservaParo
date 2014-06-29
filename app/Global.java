@@ -27,7 +27,8 @@ public class Global extends GlobalSettings {
 	static class InitialData {
 		public static void insert(Application app) {
 			checkDocumentAge();
-
+			deletePreviousData();
+				
 			List<AutonomousCommunity> autonomousCommunities;
 			List<ACObservation> autonomousCommunitiesObservations;
 			List<HistoricObservation> historicObservations;
@@ -59,6 +60,14 @@ public class Global extends GlobalSettings {
 				e.printStackTrace();
 			}
 
+		}
+
+		private static void deletePreviousData() {
+			ACObservation.deleteAll();
+			HistoricObservation.deleteAll();
+			ProvinceObservation.deleteAll();
+			AutonomousCommunity.deleteAll();
+			Province.deleteAll();
 		}
 
 		private static void checkDocumentAge() {

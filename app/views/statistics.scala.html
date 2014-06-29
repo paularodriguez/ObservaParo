@@ -3,12 +3,22 @@
 @import play.i18n._
 
 @main(title) {
-
-<ul>
-<li>@Messages.get("Average"): @statistics.get("average") </li>
-<li>@Messages.get("Max"): @statistics.get("maxValue") - @statistics.get("maxValueZone")</li>
-<li>@Messages.get("Min"): @statistics.get("minValue") - @statistics.get("minValueZone")</li>
-</ul>
+<table id = "statistics">
+<tr>
+	<td id = "title">@Messages.get("Average")</td>
+	<td>@statistics.get("average")</td>
+</tr>
+<tr>
+	<td id = "title">@Messages.get("Max")</td>
+	<td>@statistics.get("maxValue")</td>
+	<td>@statistics.get("maxValueZone")</td>
+</tr>
+<tr>
+	<td id = "title">@Messages.get("Min")</td>
+	<td>@statistics.get("minValue")</td>
+	<td>@statistics.get("minValueZone")</td>
+</tr>
+</table>
 
 @if(pObsOver != null &&pObsUnder !=null){
 	<table id="left">

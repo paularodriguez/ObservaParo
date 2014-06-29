@@ -14,6 +14,8 @@ import views.html.bars;
 import views.html.index;
 import views.html.provinces;
 import views.html.statistics;
+import views.html.sectorStatistics;
+
 
 public class Application extends Controller {
 
@@ -67,6 +69,10 @@ public class Application extends Controller {
 				ProvinceObservation.observationsUnderAverageValue(average, indicator);
 				return ok(statistics.render(title,values,null, null, ACObservation.observationsOverAverageValue(average, indicator),ACObservation.observationsUnderAverageValue(average, indicator)));
 		}
+	}
+	
+	public static Result sectorStatistics(String indicator, String title){
+		return ok(sectorStatistics.render(title, HistoricObservation.getSectorStatistics(indicator)));
 	}
 	
 }

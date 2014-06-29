@@ -41,3 +41,6 @@ FilterYear = Filtrar por año
 FilterMonth = Filtrar por mes
 FilterProvince = Filtrar por provincia
 FilterCommunity = Filtrar por comunidad
+MaxValues= Valores máximos
+MinValues= Valores mínimos
+Value = Valor
