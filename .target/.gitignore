@@ -1,9 +1,6 @@
-/ApplicationTest.class
-/Global$InitialData.class
-/Global.class
-/IntegrationTest$1.class
-/IntegrationTest.class
-/controllers
-/models
 /utils
-/views
+/models
+/web
+/GlobalHooks$1.class
+/GlobalHooks.class
+/api

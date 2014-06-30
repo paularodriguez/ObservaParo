@@ -1,0 +1,78 @@
+@(obs: List[ProvinceObservation], currentFilter: String)
+@import play.i18n._
+@main(Messages.get("Provinces")) {  
+	<form class="filters" action="@routes.Application.showProvinces("")" method="GET">
+            <input type="search" id="searchboxProvince" name="f" value="@currentFilter" placeholder="@Messages.get("FilterProvince")"	>
+            <input type="submit" id="searchsubmit" value=@Messages.get("Filter") class="btn">
+	</form>	
+
+	<main>	
+	<table>
+				<thead>
+					<td>@Messages.get("Province.Id")</td>
+					<td>@Messages.get("Province.Name")</td>
+					<td>@Messages.get("Total")</td>
+					<td>@Messages.get("TotalMen")</td>
+					<td>@Messages.get("TotalWomen")</td>
+					<td>@Messages.get("TotalUnder25")</td>
+					<td>@Messages.get("TotalMenUnder25")</td>
+					<td>@Messages.get("TotalWomenUnder25")</td>
+					<td>@Messages.get("TotalOver25")</td>
+					<td>@Messages.get("TotalMenOver25")</td>
+					<td>@Messages.get("TotalWomenOver25")</td>
+				</thead>
+                @for(o <- obs) {
+                    <tr>
+                     	<td>
+                         	@o.province.id
+                        </td>
+                        <td>
+                         	@o.province.name
+                        </td>
+                        <td>
+                        	@o.totalValue
+                        </td>
+                        <td>
+                        	@o.totalValueMen
+                        </td>
+                        <td>
+                        	@o.totalValueWomen
+                        </td>
+                        <td>
+                        	@o.totalValueUnder25
+                        </td>
+                           <td>
+                        	@o.valueMenUnder25
+                        </td>
+                            <td>
+                        	@o.valueWomenUnder25
+                        </td>
+                        <td>
+                        	@o.totalValueOver25
+                        </td>
+                        <td>
+                        	@o.valueMenOver25
+                        </td>
+                        <td>
+                        	@o.valueWomenOver25
+                        </td>
+                    </tr>
+                }
+	</table>
+	</main>
+          
+     <aside>       
+      <h3>@Messages.get("Statistics")</h3>      
+     <ul>
+     	<li><a href="@routes.Application.statistics("pTotal",Messages.get("Total"))">@Messages.get("Total")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalMen",Messages.get("TotalMen"))">@Messages.get("TotalMen")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalWomen",Messages.get("TotalWomen"))">@Messages.get("TotalWomen")</a></li>
+		<li><a href="@routes.Application.statistics("pTotalUnder25",Messages.get("TotalUnder25"))">@Messages.get("TotalUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalMenUnder25",Messages.get("TotalMenUnder25"))">@Messages.get("TotalMenUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalWomenUnder25",Messages.get("TotalWomenUnder25"))">@Messages.get("TotalWomenUnder25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalOver25",Messages.get("TotalOver25"))">@Messages.get("TotalOver25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalMenOver25",Messages.get("TotalMenOver25"))">@Messages.get("TotalMenOver25")</a></li>
+     	<li><a href="@routes.Application.statistics("pTotalWomenOver25",Messages.get("TotalWomenOver25"))">@Messages.get("TotalWomenOver25")</a></li>
+     </ul>
+	</aside>
+}

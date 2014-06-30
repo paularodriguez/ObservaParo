@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.ACObservation;
 import models.HistoricObservation;
 
 public class Executor {

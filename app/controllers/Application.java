@@ -12,8 +12,8 @@ import play.mvc.Result;
 import views.html.autonomousCommunities;
 import views.html.index;
 import views.html.provinces;
-import views.html.statistics;
 import views.html.sectorStatistics;
+import views.html.statistics;
 
 
 public class Application extends Controller {

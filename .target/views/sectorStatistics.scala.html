@@ -1,0 +1,124 @@
+@(title:String, statistics: Map[String,Object])
+
+@import play.i18n._
+
+@main(title) {
+
+<table id = "statistics">
+<tr>
+	<td id = "title">@Messages.get("Average")</td>
+	<td>@statistics.get("average")</td>
+</tr>
+<tr>
+	<td id = "title">@Messages.get("Max")</td>
+	<td>@statistics.get("maxValue")</td>
+	<td>@statistics.get("maxValueMonth")</td>
+	<td>@statistics.get("maxValueYear")</td>
+</tr>
+<tr>
+	<td id = "title">@Messages.get("Min")</td>
+	<td>@statistics.get("minValue")</td>
+	<td>@statistics.get("minValueMonth")</td>
+	<td>@statistics.get("minValueYear")</td>
+</tr>
+</table>
+
+<table>
+	<thead>
+		<tr>
+		<td rowspan="2">@Messages.get("Year")</td>
+		<td  rowspan="2">@Messages.get("Average")</td>
+		<td  colspan="2">@Messages.get("MaxValues")</td>
+		<td  colspan="2">@Messages.get("MinValues")</td>
+		</tr>
+		<tr>
+		<td>@Messages.get("Value")</td>
+		<td>@Messages.get("Month")</td>
+		<td>@Messages.get("Value")</td>
+		<td>@Messages.get("Month")</td>
+		</tr>
+	</thead>
+	<tbbody>
+		<tr>
+			<td>2005</td>
+			<td> @statistics.get("average2005")</td>
+			<td> @statistics.get("maxValue2005")</td>
+			<td> @statistics.get("maxValueMonth2005")</td>
+			<td> @statistics.get("minValue2005")</td>
+			<td> @statistics.get("minValueMonth2005")</td>
+		</tr>
+		<tr>
+			<td>2006</td>
+			<td> @statistics.get("average2006")</td>
+			<td> @statistics.get("maxValue2006")</td>
+			<td> @statistics.get("maxValueMonth2006")</td>
+			<td> @statistics.get("minValue2006")</td>
+			<td> @statistics.get("minValueMonth2006")</td>
+		</tr>
+		<tr>
+			<td>2007</td>
+			<td> @statistics.get("average2007")</td>
+			<td> @statistics.get("maxValue2007")</td>
+			<td> @statistics.get("maxValueMonth2007")</td>
+			<td> @statistics.get("minValue2007")</td>
+			<td> @statistics.get("minValueMonth2007")</td>
+		</tr>
+		<tr>
+			<td>2008</td>
+			<td> @statistics.get("average2008")</td>
+			<td> @statistics.get("maxValue2008")</td>
+			<td> @statistics.get("maxValueMonth2008")</td>
+			<td> @statistics.get("minValue2008")</td>
+			<td> @statistics.get("minValueMonth2008")</td>
+		</tr>
+		<tr>
+			<td>2009</td>
+			<td> @statistics.get("average2009")</td>
+			<td> @statistics.get("maxValue2009")</td>
+			<td> @statistics.get("maxValueMonth2009")</td>
+			<td> @statistics.get("minValue2009")</td>
+			<td> @statistics.get("minValueMonth2009")</td>
+		</tr>
+		<tr>
+			<td>2010</td>
+			<td> @statistics.get("average2010")</td>
+			<td> @statistics.get("maxValue2010")</td>
+			<td> @statistics.get("maxValueMonth2010")</td>
+			<td> @statistics.get("minValue2010")</td>
+			<td> @statistics.get("minValueMonth2010")</td>
+		</tr>
+		<tr>
+			<td>2011</td>
+			<td> @statistics.get("average2011")</td>
+			<td> @statistics.get("maxValue2011")</td>
+			<td> @statistics.get("maxValueMonth2011")</td>
+			<td> @statistics.get("minValue2011")</td>
+			<td> @statistics.get("minValueMonth2011")</td>
+		</tr>
+		<tr>
+			<td>2012</td>
+			<td> @statistics.get("average2012")</td>
+			<td> @statistics.get("maxValue2012")</td>
+			<td> @statistics.get("maxValueMonth2012")</td>
+			<td> @statistics.get("minValue2012")</td>
+			<td> @statistics.get("minValueMonth2012")</td>
+		</tr>
+		<tr>
+			<td>2013</td>
+			<td> @statistics.get("average2013")</td>
+			<td> @statistics.get("maxValue2013")</td>
+			<td> @statistics.get("maxValueMonth2013")</td>
+			<td> @statistics.get("minValue2013")</td>
+			<td> @statistics.get("minValueMonth2013")</td>
+		</tr>
+		<tr>
+			<td>2014</td>
+			<td> @statistics.get("average2014")</td>
+			<td> @statistics.get("maxValue2014")</td>
+			<td> @statistics.get("maxValueMonth2014")</td>
+			<td> @statistics.get("minValue2014")</td>
+			<td> @statistics.get("minValueMonth2014")</td>
+		</tr>
+	</tbody>
+</table>
+}

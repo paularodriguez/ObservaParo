@@ -187,7 +187,7 @@ public class ACObservation extends Model {
 		return values;
 	}
 
-	private static Double average(List<ACObservation> observations,
+	static Double average(List<ACObservation> observations,
 			String indicator) {
 		Double sum = 0.0;
 		for (ACObservation obs : observations) {

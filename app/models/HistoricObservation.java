@@ -48,21 +48,6 @@ public class HistoricObservation extends Model {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static HistoricObservation create(Double obsValue, String month,
-			Double agricultureSector) {
-		HistoricObservation observation = new HistoricObservation(obsValue,
-				month, agricultureSector);
-		observation.save();
-		return observation;
-	}
-
-	public HistoricObservation(double obsValue, String month,
-			double agricultureSector) {
-		this.obsValue = obsValue;
-		this.month = month;
-		this.agricultureSector = agricultureSector;
-	}
-
 	public static List<HistoricObservation> all() {
 		return find.all();
 	}
