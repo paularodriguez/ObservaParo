@@ -18,9 +18,6 @@ import play.db.ebean.Model;
 @Entity
 public class AutonomousCommunity extends Model {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id

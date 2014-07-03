@@ -39,12 +39,6 @@ public class ACCreator {
 
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
-			/*	if (cell.getColumnIndex() == 0) {
-						provinceId =  cell.getStringCellValue();
-					}
-					if (cell.getColumnIndex() == 1) {
-						provinceName =  cell.getStringCellValue();
-					}*/
 					if (cell.getColumnIndex() == 2) {
 						aC.setId(cell.getStringCellValue());
 					}
@@ -55,12 +49,8 @@ public class ACCreator {
 			}
 			//Add autonomous communities without duplicates
 			if (aC != null && !ACList.contains(aC)){
-			//	aC.getProvinces().add(new Province(provinceId,provinceName,aC));
 				ACList.add(aC);
 			}
-		/*	else if (aC != null && ACList.contains(aC)){
-				ACList.get(ACList.indexOf(aC)).getProvinces().add(new Province(provinceId,provinceName,aC) );
-			}*/
 		}
 		return ACList;
 	}

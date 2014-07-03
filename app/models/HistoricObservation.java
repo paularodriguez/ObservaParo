@@ -15,9 +15,6 @@ import com.avaje.ebean.Page;
 @Entity
 public class HistoricObservation extends Model {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id

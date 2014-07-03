@@ -13,7 +13,7 @@ public class URLLoader {
 
 	static String url = "https://www.sepe.es/contenido/estadisticas/datos_avance/xls/empleo/evolparoseries.xls";
 	static String name = "evolparoseries.xls";
-	
+
 	static String url2 = "http://www.sepe.es/contenido/estadisticas/datos_avance/xls/empleo/parosexoedadprov.xls";
 	static String name2 = "parosexoedadprov.xls";
 
@@ -52,9 +52,9 @@ public class URLLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		File file2 = new File(folder + name2);
-		
+
 		try {
 			conn = new URL(url2).openConnection();
 			conn.connect();
@@ -76,12 +76,6 @@ public class URLLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// System.out.println("\nempezando descarga: \n");
-		// System.out.println(">> URL: " + url);
-		// System.out.println(">> Nombre: " + name);
-		// System.out.println(">> tamaño: " + conn.getContentLength() +
-		// " bytes");
 
 	}
 }

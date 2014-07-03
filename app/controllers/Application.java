@@ -6,7 +6,6 @@ import java.util.Map;
 import models.ACObservation;
 import models.HistoricObservation;
 import models.ProvinceObservation;
-import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.autonomousCommunities;
@@ -41,11 +40,6 @@ public class Application extends Controller {
 
 	public static Result showProvinces(String filter) {
 		return ok(provinces.render(ProvinceObservation.filterProvinces(filter),filter));
-	}
-	
-	public static Result ACObservationByCode(Long code) {
-		ACObservation aC = ACObservation.findByCode(code);
-		return ok(Json.toJson(aC));
 	}
 	
 	public static Result statistics(String indicator, String title){
